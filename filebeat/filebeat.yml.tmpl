@@ -1,17 +1,16 @@
-filebeat.prospectors:
-- type: log
-  paths:
-  - '/var/lib/docker/containers/*/*.log'
-  json.message_key: log
+filebeat.inputs:
+- type: docker
+  combine_partial: true
+  containers.ids:
+  - "*"
   json.keys_under_root: true
-  processors:
-  - add_docker_metadata: ~
+  json.add_error_key: true
+  json.message_key: log
 
 output.elasticsearch:
-  # Array of hosts to connect to.
   hosts: ["${ELASTIC_SEARCH_HOST}"]
-  index: "docker-logs-%{+yyyy.MM.dd}"
+  index: "filebeat-%{[beat.version]}-%{+yyyy.MM.dd}"
 
 setup.template:
-  name: "docker-logs"
+  name: "filebeat-%{[beat.version]}-%{+yyyy.MM.dd}"
   pattern: "*"
