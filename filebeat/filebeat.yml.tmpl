@@ -1,9 +1,11 @@
 filebeat.prospectors:
-- type: docker
-  enabled: true
+- type: log
   paths:
-    - /var/lib/docker/containers/*/*.log
-  document_type: applog
+  - '/var/lib/docker/containers/*/*.log'
+  json.message_key: log
+  json.keys_under_root: true
+  processors:
+  - add_docker_metadata: ~
 
 output.elasticsearch:
   # Array of hosts to connect to.
