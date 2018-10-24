@@ -3,6 +3,7 @@ export ROOT_PATH = ${PWD}
 -include .makerc/log
 
 start: ##@service Start service
+    @envsubst < nginx/nginx.conf.tmpl > nginx/config/nginx.conf
 	@docker-compose up -d
 
 stop: ##@service Stop service
