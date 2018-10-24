@@ -2,7 +2,9 @@ filebeat.prospectors:
 - type: docker
   enabled: true
   paths:
-    - /var/lib/docker/containers/*/*.log
+  - /var/lib/docker/containers/*/*.log
+  processors:
+  - add_docker_metadata: ~
 
 output.elasticsearch:
   hosts: ["${ELASTIC_SEARCH_HOST}"]
