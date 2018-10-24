@@ -40,6 +40,10 @@ http {
         # auth_basic "Restricted Access";
         # auth_basic_user_file /etc/nginx/htpasswd.users;
 
+        location /query/ {
+            proxy_pass http://${ELASTIC_SEARCH_HOST}/;
+        }
+
         location / {
             proxy_pass http://${KIBANA_HOST};
         }
