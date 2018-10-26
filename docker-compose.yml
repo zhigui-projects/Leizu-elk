@@ -11,7 +11,7 @@ services:
     - "9200:9200"
     - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ES_JAVA_OPTS: "-Xmx2048m -Xms256m"
     privileged: true
     cap_add:
     - IPC_LOCK
