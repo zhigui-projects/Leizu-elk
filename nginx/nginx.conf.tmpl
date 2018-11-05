@@ -43,7 +43,7 @@ http {
         location /query/ {
             proxy_pass http://${ELASTIC_SEARCH_HOST}/;
             add_header Access-Control-Allow-Origin *;
-            add_header Access-Control-Allow-Headers *;
+            add_header Access-Control-Allow-Headers 'Content-Type';
         }
 
         location / {
