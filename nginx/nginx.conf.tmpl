@@ -1,6 +1,3 @@
-# Copyright IBM Corp., All Rights Reserved.
-#
-# SPDX-License-Identifier: Apache-2.0
 # This file should be put under /etc/nginx/conf.d/
 # Or place as /etc/nginx/nginx.conf
 
@@ -40,6 +37,10 @@ http {
         # auth_basic "Restricted Access";
         # auth_basic_user_file /etc/nginx/htpasswd.users;
 
+        location /kibana/ {
+            proxy_pass http://${KIBANA_HOST}/;
+        }
+
         location /query/ {
             proxy_pass http://${ELASTIC_SEARCH_HOST}/;
             add_header Access-Control-Allow-Origin *;
@@ -47,7 +48,9 @@ http {
         }
 
         location / {
-            proxy_pass http://${KIBANA_HOST};
+            proxy_pass http://${ELASTIC_SEARCH_HOST}/;
+            add_header Access-Control-Allow-Origin *;
+            add_header Access-Control-Allow-Headers 'Content-Type';
         }
     }
 

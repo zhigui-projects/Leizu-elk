@@ -1,7 +1,8 @@
-version: '2'
+version: '3.5'
 
 services:
   elasticsearch:
+    container_name: dashboard-elasticsearch
     build:
       context: elasticsearch/
     volumes:
@@ -36,6 +37,7 @@ services:
 #    - elasticsearch
 
   kibana:
+    container_name: dashboard-kibana
     build:
       context: kibana/
     volumes:
@@ -48,6 +50,7 @@ services:
     - elasticsearch
 
   nginx:
+    container_name: dashboard-nginx
     image: nginx
     restart: always
     volumes:
@@ -59,9 +62,11 @@ services:
     - elk
     links:
     - elasticsearch
+    - kibana
     depends_on:
     - elasticsearch
 
 networks:
   elk:
+    name: dashboard-elk
     driver: bridge
