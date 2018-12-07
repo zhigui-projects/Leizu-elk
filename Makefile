@@ -1,3 +1,7 @@
+# Copyright Zhigui.com. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+
 export ROOT_PATH = ${PWD}
 -include .makerc/help
 -include .makerc/log

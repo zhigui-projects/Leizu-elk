@@ -22,3 +22,6 @@ Before running the filebeat, you need to install and configure the elastic serve
 4. After a while, visit the [localhost:5601](http://localhost:5601/) and you can search the logs.
 > No default index pattern. You must select or create one at the first time.
 
+## License
+
+Dashboard ELK Project source code files are made available under the Apache License, Version 2.0 (Apache-2.0), located in the LICENSE file. Dashboard ELK Project documentation files are made available under the Creative Commons Attribution 4.0 International License (CC-BY-4.0), available at http://creativecommons.org/licenses/by/4.0/.

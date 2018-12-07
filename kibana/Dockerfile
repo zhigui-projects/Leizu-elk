@@ -1,3 +1,7 @@
+# Copyright Zhigui.com. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+
 # https://github.com/elastic/kibana-docker
 FROM docker.elastic.co/kibana/kibana-oss:6.1.0
 
